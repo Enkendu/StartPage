@@ -32,12 +32,14 @@ namespace StartPage.Rest
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Bookmarks API", Version = "v1" });
             });//End of swagger thingy.
+
+            //services.AddSingleton<IMyService, MyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             if (env.IsDevelopment())
             {
@@ -52,7 +54,7 @@ namespace StartPage.Rest
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Weather");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bookmarks");
             });
 
 
